@@ -1,0 +1,436 @@
+/* src/css/VideoRecorder.css */
+
+/* --- Theme Colors --- */
+:root {
+    --color-darkest: #0f0c29; /* Deepest background */
+    --color-dark-mid: #24243e; /* Mid-tone, for subtle elements */
+    --color-mid: #302b63; /* Accent background, buttons */
+    --color-light-text: #e0e0ff; /* Lighter text for contrast */
+    --color-white: #ffffff;
+    --color-red-accent: #ff4d4d; /* For progress bar and record indicator */
+    --color-green-accent: #4CAF50; /* For post button */
+    --color-blue-accent: #007bff; /* For general highlights */
+    --color-gradient-start: #302b63; /* From your previous theme */
+    --color-gradient-end: #0f0c29; /* From your previous theme */
+}
+
+/* --- Drawer Styles (Moved from VideoDrawer.css if it existed) --- */
+/* The main drawer content container */
+.video-drawer-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-color: var(--color-darkest); /* Ensure background fills */
+    color: var(--color-light-text);
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--color-dark-mid); /* Slightly lighter header */
+    border-bottom: 1px solid var(--color-mid);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10; /* Ensure header is above content scrolling */
+}
+
+.drawer-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-white);
+}
+
+/* Button to open drawer (VideoFloatButton styling would go here or its own CSS) */
+/* Assuming VideoFloatButton is a separate component */
+
+/* --- Video Recorder Container (main content inside drawer) --- */
+.recorder-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1; /* Allows it to fill available space */
+    padding: 20px;
+    background: linear-gradient(to top, var(--color-gradient-start), var(--color-gradient-end));
+    position: relative;
+    overflow: hidden; /* Hide any overflow */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.camera-error-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 0, 0, 0.8);
+    color: var(--color-white);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    z-index: 20;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/* --- Video Display Area --- */
+.video-display-area {
+    position: relative;
+    width: 100%;
+    max-width: 400px; /* Constrain video width */
+    aspect-ratio: 9/16; /* Typical phone portrait aspect ratio */
+    background-color: black;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--color-dark-mid);
+}
+
+.video-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1); /* Mirror camera feed */
+    transition: filter 0.3s ease;
+}
+
+.video-preview[src] { /* For recorded video, remove mirror */
+    transform: none;
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    color: #bbb;
+    font-size: 1.2rem;
+}
+
+.countdown-timer {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--color-white);
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Filters Area --- */
+.filters-area {
+    display: flex;
+    justify-content: flex-start; /* Align filters to start (left) */
+    gap: 15px;
+    padding: 15px 0; /* Padding top/bottom, no horizontal padding */
+    width: 100%;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    margin-bottom: 20px;
+    /* Hide scrollbar for cleaner look */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+.filters-area::-webkit-scrollbar { /* Chrome, Safari, Opera */
+    display: none;
+}
+
+.filter-button {
+    background-color: var(--color-dark-mid);
+    border: 2px solid transparent; /* Default transparent border */
+    border-radius: 10px;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: border-color 0.2s ease, transform 0.1s ease;
+    flex-shrink: 0;
+    width: 90px; /* Fixed width for filter buttons */
+    height: 110px; /* Fixed height */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    color: var(--color-light-text);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.filter-button:hover {
+    border-color: var(--color-mid);
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.filter-button.active {
+    border-color: var(--color-blue-accent); /* Active filter highlight */
+    box-shadow: 0 0 15px var(--color-blue-accent); /* Glow for active filter */
+    transform: translateY(-2px);
+}
+
+.filter-thumbnail {
+    width: 70px; /* Size of filter preview */
+    height: 70px;
+    border-radius: 6px;
+    background-color: #555; /* Placeholder background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7rem;
+    overflow: hidden; /* Ensure content stays within bounds */
+    transform: scaleX(-1); /* Mirror thumbnail for consistency */
+}
+/* Visual placeholders for filter thumbnails - these are just colored blocks */
+.filter-thumbnail.filter-grayscale { background-color: #888; }
+.filter-thumbnail.filter-sepia { background-color: #a08060; }
+.filter-thumbnail.filter-brightness { background-color: #eee; }
+.filter-thumbnail.filter-electric { background-color: #8a2be2; } /* Purple-ish */
+.filter-thumbnail.filter-contrast { background-color: #222; }
+.filter-thumbnail.filter-invert { background-color: #aaa; }
+.filter-thumbnail.filter-saturate { background-color: #FF69B4; } /* Hot pink for high saturation */
+
+
+/* --- Controls Area (Record Button / Post Actions) --- */
+.controls-area {
+    width: 100%;
+    padding: 10px 0; /* Adjust padding as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* For z-index stacking if needed */
+    z-index: 10;
+}
+
+.record-button-container {
+    position: relative;
+    width: 120px; /* Size of the container holding the circle and button */
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.record-button-wrapper {
+    position: relative;
+    width: 110px; /* Slightly smaller than container for progress bar to show */
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.progress-circle circle {
+    fill: transparent;
+}
+
+.progress-circle circle:nth-child(1) { /* Background circle */
+    stroke: var(--color-dark-mid);
+}
+
+.progress-circle circle:nth-child(2) { /* Progress bar */
+    stroke: var(--color-red-accent);
+    transition: stroke-dashoffset 1s linear; /* Smooth progress animation */
+    /* transform is applied inline in JS */
+}
+
+.progress-circle text {
+    user-select: none; /* Prevent text selection */
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+/* --- Filter Dropdown Styles --- */
+.filter-dropdown-container {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between label and select */
+    width: 100%;
+    max-width: 300px; /* Constrain width of the dropdown area */
+}
+
+.filter-label {
+    color: var(--color-white);
+    font-weight: 600;
+    font-size: 1.1rem;
+    white-space: nowrap; /* Prevent label from wrapping */
+}
+
+.custom-filter-select {
+    /* Remove default browser styling */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--color-dark-mid);
+    color: var(--color-light-text);
+    border: 1px solid var(--color-mid);
+    border-radius: 8px;
+    padding: 10px 15px; /* Adjust padding for aesthetics */
+    padding-right: 40px; /* Space for custom arrow */
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    width: 100%; /* Fill container width */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    /* Add custom arrow using background image */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23e0e0ff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 24px; /* Size of the arrow icon */
+}
+
+.custom-filter-select:hover {
+    border-color: var(--color-blue-accent);
+}
+
+.custom-filter-select:focus {
+    border-color: var(--color-blue-accent);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+}
+
+/* Style for the options within the dropdown */
+.custom-filter-select option {
+    background-color: var(--color-dark-mid); /* Background for option items */
+    color: var(--color-light-text);
+    padding: 10px;
+    font-size: 1rem;
+}
+.custom-filter-select option:hover {
+    background-color: var(--color-mid); /* Highlight on hover */
+}
+
+
+
+.record-button {
+    width: 80px; /* Size of the actual clickable button */
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--color-red-accent);
+    border: 6px solid var(--color-white); /* White border around the button */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 0 20px rgba(255, 77, 77, 0.6);
+}
+
+.record-button:active {
+    transform: scale(0.9); /* Shrink slightly on press */
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.4);
+}
+
+.record-button.recording {
+    background-color: #ff0000; /* More intense red when recording */
+    border-color: #ffcccc; /* Lighter border when recording */
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+}
+
+.record-icon {
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-white);
+    border-radius: 50%; /* Circle shape */
+    transition: all 0.2s ease;
+}
+
+.record-button.recording .record-icon {
+    width: 20px; /* Shrink to square when recording */
+    height: 20px;
+    border-radius: 6px;
+}
+
+/* --- Post Record Actions --- */
+.post-record-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around; /* Distribute items */
+    padding: 10px 0;
+}
+
+.retake-button,
+.post-button {
+    background-color: var(--color-mid);
+    color: var(--color-white);
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+}
+
+.retake-button:hover,
+.post-button:hover {
+    background-color: var(--color-blue-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+}
+
+.post-button {
+    background-color: var(--color-green-accent);
+    margin: 6px;
+}
+.post-button:hover {
+    background-color: #45a049;
+    box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4);
+}
+
+.post-button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Joy UI Input styling for description */
+.MuiInput-root { /* Targeting Joy UI Input base */
+    background-color: var(--color-dark-mid) !important;
+    color: var(--color-light-text) !important;
+    border: 1px solid var(--color-mid) !important;
+    border-radius: 8px !important;
+    font-size: 0.95rem !important;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+}
+
+.MuiInput-root:hover::before { /* Hover state */
+    border-bottom: 2px solid var(--color-blue-accent) !important;
+}
+
+.MuiInput-root.Mui-focused::before { /* Focused state */
+    border-color: var(--color-blue-accent) !important;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.3) !important;
+}
+
+.MuiInput-input {
+    color: var(--color-light-text) !important;
+}
+
+.MuiInput-input::placeholder {
+    color: rgba(224, 224, 255, 0.6) !important;
+}

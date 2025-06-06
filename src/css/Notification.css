@@ -1,0 +1,104 @@
+/* notification.css */
+
+.notification-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    background-color: #1A1A1A; /* Very dark background */
+    border: 1px solid #333; /* Slightly lighter border */
+    border-radius: 12px; /* More rounded corners */
+    padding: 15px;
+    margin-bottom: 10px; /* Space between items */
+    width: 95%; /* Adjust width as needed */
+    max-width: 500px; /* Max width for larger screens */
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.15); /* Cyan glow shadow */
+    transition: all 0.3s ease;
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+.notification-item:hover {
+    transform: translateY(-3px); /* Subtle lift on hover */
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.3); /* Stronger glow on hover */
+}
+
+.close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    font-size: 1.5rem; /* Larger 'x' */
+    cursor: pointer;
+    color: #FF66B2; /* Neon Pink for close button */
+    transition: color 0.2s ease;
+    padding: 5px; /* Make clickable area larger */
+}
+
+.close-btn:hover {
+    color: #FFB2F7; /* Lighter pink on hover */
+}
+
+.notification-profile-pic {
+    width: 48px; /* Slightly larger profile pic */
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 2px solid #00E0E0; /* Cyan border for profile pic */
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.4); /* Glow around profile pic */
+}
+
+.notification-text-content {
+    flex: 1; /* Takes remaining space */
+    display: flex;
+    flex-direction: column;
+    font-size: 14px; /* Base font size */
+}
+
+.name {
+    font-weight: 700; /* Bolder name */
+    margin: 0;
+    color: #E0E0E0; /* Light text for name */
+    font-size: 16px;
+}
+
+.action {
+    margin: 4px 0; /* Space above and below */
+    color: #B0B0B0; /* Muted text for general action */
+    line-height: 1.4;
+}
+
+.highlight-text {
+    font-weight: bold;
+    color: #00FFC0; /* Brighter neon green for highlighted text */
+    text-shadow: 0 0 5px rgba(0, 255, 192, 0.5); /* Subtle glow */
+}
+
+.meta {
+    font-size: 0.8rem;
+    color: #777; /* Standard muted text */
+    margin-top: 2px;
+}
+
+/* Optional: Animation for new notifications or deletion */
+/*
+.notification-item.entering {
+    opacity: 0;
+    transform: translateY(20px);
+}
+.notification-item.entering-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.notification-item.exiting {
+    opacity: 1;
+}
+.notification-item.exiting-active {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+*/

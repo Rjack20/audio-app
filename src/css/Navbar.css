@@ -1,0 +1,219 @@
+/* Overall wrapper to ensure the navbar is fixed at the top */
+.nav-wrapper {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+/* Main Navbar container */
+.app-navbar {
+    background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    padding: 0.5rem 1rem; /* Adjust padding as needed */
+    display: flex;
+    align-items: center;
+    min-height: 56px; /* Typical navbar height */
+}
+.app-navbar-home {
+    background-color: black;
+    padding: 0.5rem 1rem; /* Adjust padding as needed */
+    display: flex;
+    align-items: center;
+    min-height: 56px; /* Typical navbar height */
+}
+
+/* Inner container for max-width and centering, similar to Bootstrap's container-fluid */
+.nav-inner-container {
+    width: 100%;
+    max-width: 1200px; /* Example max-width */
+    margin: 0 auto; /* Center the content */
+    display: flex;
+    justify-content: space-between; /* Space out brand and links */
+    align-items: center;
+}
+
+/* Custom Navbar Brand/Logo */
+.navbar-brand-custom {
+    color: rgb(255, 255, 255);
+    font-family: "Nunito", sans-serif;
+    font-size: 16px; /* Your specified font size */
+    font-weight: 400;
+    text-decoration: none;
+    margin-right: 27px; /* Matches original margin */
+    cursor: pointer;
+    padding: 0.5rem 0; /* Add padding for clickable area */
+}
+
+/* Profile thumbnail in the navbar */
+.profile-thumb {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    /* On larger screens, push to the right */
+    margin-left: auto;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+
+/* Mobile Menu Toggle Button (Hamburger Icon) */
+.menu-toggle {
+    display: none; /* Hidden by default on larger screens */
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for button */
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    margin-left: auto; /* Pushes to the right on small screens */
+}
+
+.menu-icon,
+.menu-icon::before,
+.menu-icon::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 3px;
+    background-color: white; /* Color of the hamburger lines */
+    border-radius: 1px;
+    transition: all 0.3s ease;
+}
+
+.menu-icon::before {
+    transform: translateY(-8px);
+}
+
+.menu-icon::after {
+    transform: translateY(5px);
+}
+
+/* Animation for menu toggle to 'X' */
+.menu-toggle.open .menu-icon {
+    background-color: transparent; /* Middle line disappears */
+}
+
+.menu-toggle.open .menu-icon::before {
+    transform: translateY(0) rotate(45deg);
+}
+
+.menu-toggle.open .menu-icon::after {
+    transform: translateY(-3px) rotate(-45deg); /* Adjusted for visual alignment */
+}
+
+
+/* Navigation Links Container (the collapsible part) */
+.nav-links-container {
+    display: flex;
+    flex-grow: 1; /* Allows it to take available space */
+    justify-content: flex-end; /* Pushes links to the right on desktop */
+    align-items: center; /* Vertically center items */
+}
+
+/* List of navigation items */
+.nav-list {
+    display: flex;
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+}
+
+/* Individual navigation item */
+.list-item {
+    margin: 0 10px; /* Spacing between items */
+}
+
+/* Custom Nav Links */
+.nav-link-custom {
+    color: rgba(255, 255, 255, 0.75); /* Muted white */
+    text-decoration: none;
+    padding: 0.5rem 0; /* Vertical padding for clickable area */
+    font-size: 13px; /* Your specified font size */
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-link-custom:hover,
+.nav-link-custom:focus {
+    color: white; /* Brighter white on hover/focus */
+    text-decoration: none;
+}
+
+/* Notification Count */
+.notification-count {
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 5px; /* Spacing from 'Notifications' text */
+    font-size: 0.8em; /* Slightly smaller than link text */
+    vertical-align: super; /* Raise it slightly */
+}
+
+
+/* --- Responsive Adjustments (Mobile View) --- */
+@media (max-width: 991.98px) { /* Corresponds to Bootstrap's 'lg' breakpoint for collapsing */
+    .menu-toggle {
+        display: block; /* Show hamburger button */
+        order: 2; /* Place toggle button after brand but before profile on mobile */
+    }
+
+    .profile-thumb {
+        order: 3; /* Push profile image to the far right on mobile */
+        margin-left: 1rem; /* Space between toggle and profile */
+    }
+
+    .nav-inner-container {
+        flex-wrap: wrap; /* Allow items to wrap to new line */
+        justify-content: space-between; /* Space out brand and toggle */
+    }
+
+    .nav-links-container {
+        /* Initially hidden on mobile, full width */
+        display: none;
+        flex-direction: column; /* Stack links vertically */
+        width: 100%;
+        position: absolute; /* Position below the navbar */
+        top: 100%;
+        left: 0;
+        background: linear-gradient(to right, #0f0c29, #302b63, #24243e); /* Match navbar background */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+        padding: 1rem 0;
+        max-height: 0; /* Collapse by default */
+        overflow: hidden; /* Hide overflow content */
+        transition: max-height 0.3s ease-out; /* Smooth transition for collapsing */
+    }
+
+    .nav-links-container.menu-open {
+        display: flex; /* Show when opened */
+        max-height: 500px; /* A value larger than the max possible height of the menu */
+    }
+
+    .nav-list {
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start; /* Align links to the left */
+    }
+
+    .list-item {
+        width: 100%;
+        margin: 0; /* Remove horizontal margins */
+    }
+
+    .nav-link-custom {
+        padding: 0.75rem 1rem; /* More vertical padding for tap targets */
+        width: 100%;
+        text-align: left; /* Align text to the left */
+        color: white; /* Make links brighter on mobile menu */
+    }
+
+    .profile-thumb {
+        /* Ensure profile image is positioned correctly if it's outside the nav-links-container for mobile */
+        /* If it's inside, its flex order within nav-links-container will apply */
+        display: none; /* Hide default profile thumb on mobile, let the one inside the menu show */
+    }
+    .nav-links-container .profile-thumb { /* Re-show it within the opened menu */
+        display: block;
+        margin: 1rem auto; /* Center it in the mobile menu */
+    }
+
+}

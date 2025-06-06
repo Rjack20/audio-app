@@ -1,0 +1,136 @@
+.comment-drawer-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.comment-drawer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0; /* Initially hidden */
+    background-color: rgba(0, 0, 0, 0.9); /* Dark overlay */
+    color: white;
+    transition: height 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Hide content when closed */
+}
+
+.comment-drawer.open {
+    height: 80%; /* Adjust as needed, e.g., 80vh */
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.drawer-header h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.close-drawer-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.comments-list {
+    flex-grow: 1; /* Takes up available space */
+    overflow-y: auto; /* Scrollable if comments exceed height */
+    padding: 15px;
+}
+
+.no-comments {
+    text-align: center;
+    color: #aaa;
+    margin-top: 20px;
+}
+
+.comment-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.comment-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+    flex-shrink: 0; /* Prevent shrinking */
+    cursor: pointer;
+}
+
+.comment-content {
+    flex-grow: 1;
+}
+
+.comment-author {
+    font-weight: bold;
+    margin-right: 5px;
+    display: block; /* Ensures author is on its own line */
+    margin-bottom: 3px;
+    color: #6da3a1; /* Light blue for author name */
+    cursor: pointer;
+}
+
+.comment-txt {
+    margin: 0;
+    line-height: 1.4;
+    font-size: 0.95em;
+    color: white;
+    cursor: pointer;
+}
+
+
+.comment-input-area {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 10px; /* Space between input and button */
+}
+
+.comment-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    font-size: 1em;
+}
+
+.comment-input::placeholder {
+    color: #bbb;
+}
+
+.post-comment-btn {
+    background-color: #007bff; /* Primary blue color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+}
+
+.post-comment-btn:hover {
+    background-color: #0056b3;
+}

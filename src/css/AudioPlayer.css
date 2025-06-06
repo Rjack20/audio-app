@@ -1,0 +1,148 @@
+.audio-player-container {
+    margin: 10px;
+        border-radius: 6px;
+      background: linear-gradient(to right, #656567, #302b63, #656567);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    cursor: pointer;
+
+}
+
+.artist-username{
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.song-title{
+  font-size: 13px;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+.audio-player-container:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.995);
+}
+
+.ply-button{
+width: 16px;
+    transition: 0.3s;
+
+}
+.ply-button:hover{
+width: 18px;
+
+}
+
+
+@keyframes rotateOnce {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-once {
+  animation: rotateOnce 1s ease-in-out;
+}
+
+
+
+.audio-player-container {
+  display: flex;
+  margin-bottom: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.audio-card-image {
+  flex: 0 0 25%;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.audio-card-image img {
+  width: 100%;
+         border-radius: 6px;
+
+  cursor: pointer;
+}
+
+.audio-card-content {
+  flex: 0 0 75%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.artist-username {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.song-title {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #9b9b9b;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #ccc;
+  margin-top: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #007bff;
+}
+
+.time-display {
+  text-align: center;
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #9b9b9b;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .audio-player-container {
+    flex-direction: column;
+  }
+
+  .audio-card-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .audio-card-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  .audio-card-content {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .controls {
+    justify-content: center;
+  }
+}

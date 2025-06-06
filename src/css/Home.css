@@ -1,0 +1,362 @@
+/* Universal Box Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Overall page setup */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: black;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Hero Section Styling */
+.hero {
+    display: flex;
+    align-items: center; /* Keeps content centered if there's extra space */
+    justify-content: center;
+    text-align: center;
+    padding: 2rem; /* Base padding for smaller screens */
+    position: relative;
+    background-image: url('../images/purple.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* --- THE FIX FOR WIDE SCREENS & CONTENT OVERFLOW --- */
+@media (min-width: 992px) { /* Applies to screens larger than typical tablet/mobile */
+    .hero {
+        /* Set a MINIMUM height for visual consistency on large screens,
+           but allow it to grow if content is taller */
+        min-height: 100vh;
+        /* Keep the padding-top for the fixed navbar */
+        padding-top: 80px;
+        /* Also add some padding-bottom for symmetry or if content goes near the bottom */
+        padding-bottom: 2rem; /* Example: 2rem or more */
+    }
+
+    .hero-content {
+        justify-content: flex-start; /* Align content to the top within hero-content if it gets tall */
+    }
+}
+/* --- END OF THE FIX --- */
+
+
+.hero-content {
+    animation: fadeIn 1.5s ease;
+    max-width: 900px;
+    width: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Main title styling */
+.hero-content h1 {
+    font-family: monospace;
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Main hero paragraph */
+.hero-content p {
+    font-size: 1rem; /* Slightly smaller for better fit with images */
+    color: white;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.slider-image{
+    margin: 6px;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover; /* Ensures images cover their area without distortion */
+}
+
+/* --- Slider Specific Styles --- */
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 600px;
+    margin: 2rem auto;
+    overflow: hidden;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    /* Removed word-wrap/overflow-wrap from here as it's not the direct text container */
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 1.5s ease-in-out;
+    /* This width is calculated by JS to accommodate all slides, so it needs to be wide */
+    width: calc(100% * var(--num-slides)); /* This variable needs to be set in JS or a parent */
+}
+
+.slide-item {
+    /* flex-basis: 100% and flex-shrink: 0 are crucial here for the slider functionality. */
+    flex: 0 0 100%; /* Ensures each slide takes 100% of the track's visible width and doesn't shrink */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Keep content centered within each slide */
+    align-items: center;
+    text-align: center;
+    min-height: 200px; /* Adjust if the images make this too short */
+    margin: 0;
+    /* Added text wrapping properties directly to the slide item */
+    overflow-wrap: break-word; /* Allows long words within the slide-item to break */
+    word-break: break-word;   /* More aggressive breaking for long words */
+    white-space: normal;      /* Ensures default text wrapping behavior */
+}
+
+/* Ensure the image container is also a flex row and centered */
+.slide-item > div[style*="flex-direction: row"] {
+    display: flex; /* Make sure it's a flex container */
+    flex-direction: row; /* Ensure row direction */
+    justify-content: center; /* Center images horizontally */
+    align-items: center; /* Align images vertically */
+    margin: 6px 0; /* Adjust margin if needed, e.g., 6px top/bottom, 0 left/right */
+}
+
+
+.slide-title {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+    background: linear-gradient(to right, #ff512f, #dd2476);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    /* --- ADDED FOR TEXT WRAPPING --- */
+    overflow-wrap: break-word; /* Allows long titles to break */
+    word-break: break-word;   /* More aggressive breaking for titles */
+    white-space: normal;      /* Explicitly ensures wrapping */
+}
+
+.slide-description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+    max-width: 400px; /* Good, this provides a max width for the description itself */
+    /* --- ADDED FOR TEXT WRAPPING --- */
+    overflow-wrap: break-word; /* Allows long descriptions to break */
+    word-break: break-word;   /* More aggressive breaking for descriptions */
+    white-space: normal;      /* Explicitly ensures wrapping */
+}
+
+.slide-cta-button {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(to right, #4a4a4d, #252345);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+.share-beats-img{
+    width: 300px;
+    height: 150px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+.slide-cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 81, 47, 0.3);
+    background: linear-gradient(to right, #ff512f, #dd2476);
+}
+
+/* Slider Navigation Dots */
+.slider-nav-dots {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+    background-color: #ff512f;
+    transform: scale(1.2);
+}
+
+/* --- Main CTA Buttons (at the bottom) --- */
+.main-cta-buttons {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.main-cta-buttons a {
+    padding: 1rem 2.5rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(to right, #656567, #302b63);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.main-cta-buttons a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 81, 47, 0.5);
+    background: linear-gradient(to right, #ff512f, #dd2476);
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --- Responsive Adjustments --- */
+/* Mobile first approach where generic rules are for mobile,
+   and media queries override for larger screens */
+
+@media (max-width: 991.98px) { /* Adjust 'hero' padding for screens smaller than 'lg' */
+    .hero {
+        padding-top: 2rem; /* Revert to the original base padding for mobile */
+        height: 100vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 1.5rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .slider-container {
+        width: 90%;
+        margin: 1.5rem auto;
+    }
+
+    .slide-item {
+        padding: 1.5rem;
+        min-height: 180px;
+        /* Ensure wrapping properties persist */
+        overflow-wrap: break-word;
+        word-break: break-word;
+        white-space: normal;
+    }
+
+    .slide-title {
+        font-size: 1.8rem;
+        /* Ensure wrapping properties persist */
+        overflow-wrap: break-word;
+        word-break: break-word;
+        white-space: normal;
+    }
+
+    .slide-description {
+        font-size: 1rem;
+        /* Ensure wrapping properties persist */
+        overflow-wrap: break-word;
+        word-break: break-word;
+        white-space: normal;
+    }
+
+    .slide-cta-button {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .main-cta-buttons {
+        margin-top: 2rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-cta-buttons a {
+        width: 80%;
+        max-width: 300px;
+        text-align: center;
+        padding: 0.9rem 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.8rem; /* Adjusted for smaller screens */
+    }
+
+    .hero-content p {
+        font-size: 0.9rem; /* Adjusted for smaller screens */
+    }
+
+    .slider-container {
+        width: 95%;
+    }
+
+    .slide-item {
+        padding: 1rem;
+        min-height: 160px;
+        /* Ensure wrapping properties persist */
+        overflow-wrap: break-word;
+        word-break: break-word;
+        white-space: normal;
+    }
+
+    .slide-title {
+        font-size: 1.6rem;
+        /* Ensure wrapping properties persist */
+        overflow-wrap: break-word;
+        word-break: break-word;
+        white-space: normal;
+    }
+
+    .slide-description {
+        font-size: 0.9rem;
+        /* Ensure wrapping properties persist */
+        overflow-wrap: break-word;
+        word-break: break-word;
+        white-space: normal;
+    }
+
+    .slide-cta-button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+}

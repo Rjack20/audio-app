@@ -1,0 +1,143 @@
+/* src/css/UserProfileTabs.css */
+
+.user-profile-tabs-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #0f0c29;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.tabs-header {
+    display: flex;
+    justify-content: space-around;
+    background-color: #24243e;
+    border-bottom: 1px solid #302b63;
+    padding: 0;
+    margin: 0;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 18px 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #b0aed4;
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    outline: none;
+}
+
+.tab-button:hover {
+    color: #e0e0ff;
+    background-color: #302b63;
+}
+
+.tab-button.active {
+    color: #ffffff;
+    border-bottom-color: #6a5acd;
+    background-color: #0f0c29;
+}
+
+/* --- Core Sliding CSS (CHECK THESE CAREFULLY) --- */
+.tabs-content-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.tabs-content-slider {
+    display: flex;
+    width: 200%;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.tab-pane {
+    width: 50%;
+    flex-shrink: 0;
+    padding: 25px; /* Ensures space around the content */
+    box-sizing: border-box;
+    min-height: 200px;
+    background-color: #0f0c29;
+    color: #d0d0e0;
+
+    /* New: Make tab-pane a flex container to center its content */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center;   /* Center children horizontally */
+}
+
+/* Transform rules for sliding */
+.tabs-content-slider.show-liked-songs {
+    transform: translateX(0%);
+}
+
+.tabs-content-slider.show-videos {
+    transform: translateX(-50%);
+}
+/* --- END Core Sliding CSS --- */
+
+/* Optional: Basic styling for empty states or list items within tabs */
+.tab-pane p {
+    text-align: center;
+    color: #a0a0a0;
+    margin-top: 30px;
+    font-style: italic;
+}
+
+/* Add styles for .video-grid and .video-item */
+.video-grid {
+    display: grid;
+    /* Default for larger screens: flexible columns, adjust minmax for desired card size */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px; /* Space between video items */
+    padding: 10px; /* Padding inside the grid, around the items */
+    width: 100%; /* Ensures the grid attempts to take full width of its parent's content area */
+    max-width: 1200px; /* Optional: Sets a max-width for the grid on very large screens */
+    /* When max-width is hit, 'align-items: center' on .tab-pane will center it */
+    /* Remove margin-right from here and let parent handle centering */
+}
+
+.video-item {
+    border-radius: 8px;
+    overflow: hidden; /* Ensures content respects border-radius */
+    text-align: center;
+    padding-bottom: 10px; /* Space below content */
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* Styles for the VideoPost component if it's rendered as a direct child */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content (like image/text) within each video item */
+}
+
+/* Assuming VideoPost renders an img and a p tag inside it */
+
+
+
+/* Media Query for Mobile Sizes (max-width: 768px typically) */
+@media (max-width: 768px) {
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns, equal width */
+        gap: 10px; /* Slightly less gap on smaller screens */
+        padding: 5px;
+        /* No specific width needed here as it inherits 100% and align-items handles centering */
+    }
+
+    .video-item {
+        padding-bottom: 5px;
+    }
+
+    .video-item img {
+    }
+
+    .video-item p {
+        font-size: 0.9rem;
+        margin: 0 5px;
+    }
+}

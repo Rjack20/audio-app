@@ -1,0 +1,119 @@
+/* Overall container for centering and background */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    /* This linear-gradient needs to be applied to the body or a root element */
+    background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    color: white; /* Default text color */
+    min-height: 100vh; /* Ensure it takes full viewport height */
+}
+
+/* Wrapper for the form container to handle flexible centering */
+.form-container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure it centers vertically on smaller content */
+    width: 100%;
+}
+
+/* Main form card styling */
+.form-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 2.5rem;
+    max-width: 400px;
+    width: 90%; /* Make it responsive */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box; /* Include padding in width */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    background: linear-gradient(to right, #ff512f, #dd2476); /* Orange to pink gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8); /* Slightly muted white for labels */
+}
+
+input {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15); /* Semi-transparent white for input background */
+    font-size: 1rem;
+    color: white; /* Text color inside input */
+    box-sizing: border-box; /* Include padding in width */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.25); /* Slightly brighter on focus */
+    border-color: #ff7979; /* Highlight border on focus */
+}
+
+/* Placeholder styling for better contrast on dark background */
+input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.btn {
+    width: 100%;
+    padding: 0.9rem;
+    margin-top: 1.2rem;
+    background: linear-gradient(to right, #656567, #302b63); /* Darker gradient for button */
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px); /* Slight lift */
+    box-shadow: 0 4px 15px rgba(255, 81, 47, 0.3); /* Softer shadow */
+    background: linear-gradient(to right, #ff512f, #dd2476); /* Hover to main gradient */
+}
+
+.toggle-form {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7); /* Muted text */
+}
+
+.toggle-form span {
+    color: #ff7979; /* Accent color for links */
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.toggle-form span:hover {
+    color: #ff512f; /* Darker accent on hover */
+}
+
+.error-message {
+    color: #ff7979; /* Reddish for errors */
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    display: block; /* Ensure it takes its own line */
+}

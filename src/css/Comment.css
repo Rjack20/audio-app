@@ -1,0 +1,108 @@
+.comment {
+    position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin: 12px;
+  font-family: Arial, sans-serif;
+      border-radius: 10px;
+max-width: 100%;
+   box-shadow: 8 4px 8px 8 rgba(0, 0, 0, 0.375);
+    transition: 0.3s;
+    cursor: pointer;
+
+}
+
+.comment-container {
+  max-width: 600px;          /* Set a reasonable max width */
+  width: 100%;               /* Let it fill parent width */
+  background-color: #f5f5f5;
+  padding: 12px;
+  border-radius: 8px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  word-wrap: break-word;     /* Ensure long words break */
+  overflow-wrap: break-word; /* Safer for all browsers */
+}
+
+.comment:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.995);
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: contain;
+  margin: 12px;
+  cursor: pointer;
+}
+
+.comment-body {
+  flex: 1;
+    min-width: 0; /* Ensures text wraps within flex item */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.comment-username {
+  font-weight: bold;
+  font-size: 12px;
+  color: #262626;
+      margin-bottom: 3px;
+      cursor: pointer;
+
+}
+
+.timestamp {
+  font-size: 10px;
+  color: #8e8e8e;
+      margin-bottom: 3px;
+
+}
+
+.comment-text {
+  font-size: 10px;
+  color: #262626;
+  top: 25px;
+  margin: 5PX;
+  white-space: pre-wrap;
+
+
+   margin: 0;
+  line-height: 1.2;
+}
+
+.comment-like{
+    width: 17px;
+    margin-bottom: 2px;
+    cursor: pointer;
+      animation: rotateOnce 1s ease-in-out;
+      cursor: pointer;
+
+    
+}
+.comment-like-alt{
+    width: 17px;
+    margin-bottom: 2px;
+    cursor: pointer;
+
+    
+}
+
+
+@keyframes rotateOnce {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+

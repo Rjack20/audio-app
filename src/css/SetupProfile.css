@@ -1,0 +1,384 @@
+/* SetupProfile.css */
+
+/* Global Body Styling */
+body {
+    background-color: #0A0A0A; /* Deep dark background */
+    color: #E0E0E0; /* Default light text */
+    font-family: 'Arial', sans-serif; /* Or your preferred font */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Main Container */
+.setup-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in element's total width and height */
+    background-color: #0A0A0A; /* Ensure consistent background */
+}
+
+/* Main Title */
+.main-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #00FFFF; /* Bright cyan for the title */
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+    letter-spacing: 1px;
+    animation: pulseGlow 2s infinite alternate; /* Subtle breathing glow */
+}
+
+@keyframes pulseGlow {
+    from { text-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.3); }
+    to { text-shadow: 0 0 15px rgba(0, 255, 255, 0.9), 0 0 25px rgba(0, 255, 255, 0.5); }
+}
+
+
+/* Setup Card */
+.setup-card {
+    background-color: #1A1A1A; /* Darker background for the card */
+    border: 1px solid #333; /* Subtle border */
+    border-radius: 15px; /* Rounded corners */
+    padding: 30px;
+    width: 100%;
+    max-width: 450px; /* Max width for larger screens */
+    box-shadow: 0 8px 30px rgba(0, 255, 255, 0.2); /* Cyan glow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* For spinner if you want it relative to card */
+    transition: all 0.3s ease;
+}
+
+/* Individual Step Styling (motion.div) */
+.setup-step {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    min-height: 200px; /* Ensure consistent height for transitions */
+}
+
+.step-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #00FFC0; /* Neon green for step titles */
+    margin-bottom: 25px;
+    text-align: center;
+    text-shadow: 0 0 8px rgba(0, 255, 192, 0.5);
+}
+
+/* Text Input */
+.text-input {
+    width: 80%; /* Adjusted width */
+    padding: 12px 15px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    background-color: #2A2A2A; /* Darker input background */
+    color: #E0E0E0;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.text-input::placeholder {
+    color: #888;
+}
+
+.text-input:focus {
+    border-color: #00FFFF; /* Neon focus glow */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+}
+
+/* Profile Picture Preview */
+.profile-preview-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* Circular */
+    object-fit: cover;
+    margin-bottom: 25px;
+    border: 3px solid #FF66B2; /* Neon pink border */
+    box-shadow: 0 0 15px rgba(255, 102, 178, 0.7);
+    transition: transform 0.3s ease;
+}
+
+.profile-preview-pic:hover {
+    transform: scale(1.05);
+}
+
+/* Custom File Upload Button */
+.custom-file-upload {
+    background-color: #AEEA00; /* Lime green button */
+    color: #1A1A1A; /* Dark text */
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 15px;
+    box-shadow: 0 0 10px rgba(174, 234, 0, 0.5);
+}
+
+.custom-file-upload:hover {
+    background-color: #9ECF00; /* Darker green on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(174, 234, 0, 0.8);
+}
+
+.upload-success-text {
+    color: #00FFC0;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+
+/* Radio Button Group */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between radio options */
+    width: 80%;
+    align-items: flex-start; /* Align labels to the left */
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    color: #B0B0B0; /* Muted text */
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.radio-label:hover {
+    color: #E0E0E0; /* Lighter on hover */
+}
+
+.custom-radio {
+    /* Hide default radio button */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #00FFFF; /* Neon cyan border */
+    background-color: #2A2A2A;
+    margin-right: 10px;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.custom-radio:checked {
+    background-color: #00FFFF; /* Neon cyan when checked */
+    border-color: #00FFFF;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.8); /* Glow when checked */
+}
+
+.custom-radio:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px; /* Inner dot */
+    height: 8px;
+    border-radius: 50%;
+    background-color: #1A1A1A; /* Dark dot inside neon circle */
+    transform: translate(-50%, -50%);
+}
+
+
+/* Confirmation Step */
+.confirmation-step {
+    text-align: center; /* Ensures text like "All Set!" and "You're almost ready..." are centered */
+    margin-bottom: 20px;
+    display: flex; /* Make it a flex container */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center items horizontally within this flex container */
+    width: 100%; /* Ensure it takes full width of its parent to allow centering */
+}
+
+.confirmation-text {
+    font-size: 1.1rem;
+    color: #B0B0B0;
+    margin-bottom: 20px;
+}
+
+.summary-details {
+      background-color: #2A2A2A;
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    width: 90%; /* Keep max-width here if needed, but ensure it flexes correctly */
+    max-width: 350px; /* Example: adjust if you want it narrower than card width */
+    text-align: left; /* Keep text left-aligned INSIDE this box */
+    color: #D0D0D0;
+    /* --- CRITICAL CHANGE FOR CENTERING THIS BLOCK --- */
+    margin-left: auto;
+    margin-right: auto; /* This centers the block itself */
+}
+
+.summary-details p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.summary-details p:last-child {
+    margin-bottom: 0;
+}
+
+.summary-value {
+    font-weight: bold;
+    color: #00FFC0; /* Neon green for values */
+}
+
+.summary-profile-pic {
+  width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 15px;
+    border: 2px solid #FF66B2;
+    box-shadow: 0 0 10px rgba(255, 102, 178, 0.5);
+    /* --- CRITICAL CHANGE FOR CENTERING THIS IMAGE --- */
+    display: block; /* Important for margin: auto to work */
+    margin-left: auto;
+    margin-right: auto; /* This centers the image if it's a block element */
+}
+
+.confirmation-instruction {
+    font-size: 1rem;
+    color: #B0B0B0;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+
+/* Navigation Buttons */
+.navigation-buttons {
+   display: flex;
+    justify-content: space-around; /* Distributes space around items */
+    width: 100%;
+    margin-top: 30px;
+    /* Ensure this container also centers itself within the card */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 350px; /* Optional: control button group width */
+}
+
+.nav-button {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    min-width: 100px; /* Ensure consistent button width */
+}
+
+.nav-button:disabled {
+    background-color: #333;
+    color: #777;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.back-button {
+    background-color: #FF66B2; /* Neon Pink */
+    color: #1A1A1A;
+    box-shadow: 0 0 10px rgba(255, 102, 178, 0.5);
+}
+
+.back-button:not(:disabled):hover {
+    background-color: #FF4DA6; /* Darker pink on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 102, 178, 0.8);
+}
+
+.next-button {
+    background-color: #00FFFF; /* Neon Cyan */
+    color: #1A1A1A;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.next-button:not(:disabled):hover {
+    background-color: #00E0E0; /* Darker cyan on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+}
+
+.finish-button {
+    background-color: #AEEA00; /* Lime Green */
+    color: #1A1A1A;
+    box-shadow: 0 0 10px rgba(174, 234, 0, 0.5);
+}
+
+.finish-button:not(:disabled):hover {
+    background-color: #9ECF00; /* Darker green on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(174, 234, 0, 0.8);
+}
+
+/* Spinner (assuming Spinner.js handles its own minimal styling or is adjusted) */
+/* You might want to define global spinner styles in your App.css or similar */
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .main-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    
+    .setup-card {
+        padding: 20px;
+        margin: 0 15px; /* Slightly more horizontal margin for aesthetics */
+    }
+
+    .navigation-buttons {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        gap: 15px; /* Space between stacked buttons */
+        margin-top: 25px;
+        align-items: center; /* Center buttons horizontally when stacked */
+        max-width: unset; /* Remove max-width so they can take full available width */
+    }
+
+    .nav-button {
+        width: 100%; /* Full width for stacked buttons */
+        max-width: 250px; /* Limit max width for readability/aesthetic */
+    }
+
+    /* Ensure text inputs and file upload button are also centered */
+    .text-input,
+    .custom-file-upload {
+        width: 90%; /* Adjust width for better mobile fit */
+        max-width: 300px; /* Example max width */
+        margin-left: auto;
+        margin-right: auto; /* Center them */
+    }
+
+    .profile-preview-pic {
+        margin-left: auto;
+        margin-right: auto; /* Ensure centering */
+    }
+
+    .radio-group {
+        width: 90%; /* Adjust width for better mobile fit */
+        margin-left: auto;
+        margin-right: auto; /* Center the radio group */
+    }
+}

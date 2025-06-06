@@ -1,0 +1,52 @@
+/* NotificationsPage.css */
+
+body {
+    background-color: #0A0A0A; /* Deep dark background for the whole page */
+    color: #E0E0E0; /* Default text color */
+    font-family: 'Arial', sans-serif; /* Or your preferred font */
+}
+
+.notifications-page-container {
+    padding: 20px;
+    margin-top: 60px; /* Adjust based on your header/navbar height */
+    min-height: 100vh; /* Ensure it takes full viewport height */
+    background-color: #0A0A0A; /* Match body background */
+}
+
+.notifications-page-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #00FFFF; /* Bright cyan for the title */
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.7); /* Stronger glow for title */
+    letter-spacing: 1px;
+}
+
+.notification-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between notification items */
+    align-items: center; /* Center notifications horizontally */
+}
+
+.no-notifications-message {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.1rem;
+    color: #B0B0B0;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.notifications-page-container.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Center loading text vertically */
+}
+
+.loading-text {
+    font-size: 1.2rem;
+    color: #00D1FF; /* Neon blue for loading text */
+    text-shadow: 0 0 8px rgba(0, 209, 255, 0.5);
+}

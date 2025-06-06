@@ -1,0 +1,72 @@
+.play-controls-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 8 4px 8px 8 rgba(0, 0, 0, 0.375);
+    transition: 0.3s;
+
+}
+
+
+
+.play-controls-container:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.995);
+}
+
+
+
+.comment-like-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.music-card-comment {
+    background-color: rgb(56, 157, 157);
+    border-radius: 50%;
+}
+
+
+.music-card-comment1 {
+    border-radius: 10px;
+    margin-right: 6px;
+    border-color: rgb(161, 161, 161);
+
+}
+
+.music-card-comment1:hover {
+   width: 40px;
+
+
+}
+
+
+
+.music-card-like {
+    border-radius: 10px;
+    margin-left: 6px;
+    border-color: rgb(161, 161, 161);
+}
+
+.music-card-like:hover {
+   width: 40px;
+}
+
+.music-song-title {
+    color: rgb(0, 0, 0);
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+
+.music-card-title {
+    color: rgb(86, 86, 86);
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}

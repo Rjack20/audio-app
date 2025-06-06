@@ -1,0 +1,88 @@
+
+.comment-button-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.song-page-card {
+    height: 400px;
+    margin: 50px;
+    border-radius: 10px;
+  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    box-shadow: 8 4px 8px 8 rgba(0, 0, 0, 0.375);
+    transition: 0.3s;
+   
+}
+
+.song-page-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.995);
+}
+.song-page-image {
+    height: 400px;
+}
+
+.song-card-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.song-page-song-title{
+         color: rgb(0, 0, 0);
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 18px;
+}
+
+/* Add this to your CSS file (e.g., in your component's CSS or a global one) */
+
+.comment-button-container {
+    position: fixed; /* <--- This is the key change */
+    bottom: 20px;    /* Adjust as needed for desired vertical position */
+    right: 20px;     /* Adjust as needed for desired horizontal position */
+    z-index: 1000;   /* Ensure it appears above most other content */
+
+    /* You can also add some padding/margin around the container if needed */
+    /* margin: 0; */
+    /* padding: 0; */
+}
+
+.comment-button {
+    margin-bottom: 6px;
+  padding: 10px 20px;
+  border-radius: 25px; /* Pill shape */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Space between text and optional icon */
+}
+
+/* Specific styles for the Modern button */
+.comment-button-modern {
+  background: linear-gradient(145deg, #6a82fb, #fc5c7d); /* Blue to pink gradient */
+  border: none;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.comment-button-modern:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(145deg, #7b93ff, #fd6d8d); /* Slightly brighter on hover */
+}
+
+.comment-button-modern:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
